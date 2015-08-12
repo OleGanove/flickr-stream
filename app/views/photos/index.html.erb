@@ -1,47 +1,6 @@
-<h1>Listing photos</h1>
-
-  <table>
-    <thead>
-      <tr>
-	    <th></th>
-		<th></th>
-		<th></th>
-	  </tr>
-	</thead>
-
-	<tbody>
-	<% @photos.each do |photo| %>
-	  <tr>
-	    <td><img src="<%= photo.photo_url %>" style="width: 150px;height: 100px;"></td>
-		<td><%= link_to "Show", photo %></td>
-		<td><%= link_to "Destroy", photo, method: :delete, data: { confirm: "Are you sure?" } %></td>
-	  </tr>
-	<% end %>
-	</tbody>
-  </table>
-
-<br>
-<p><%= @id %> <%= @username %></p>
-<%= link_to "New Photo", new_photo_path %>
-
-
-<h1>All flickr photos for <%= @username %></h1>
-
-<% @flickr_photos_urls.each do |url| %>
-  <tr>
-	<td><img src="<%=url%>" style="width: 150px;height: 100px;"></td>
-  </tr>
-<% end %>
-
-<h1>Search for a user's photos</h1>
-
-<%= form_tag(photos_path, :method => "get") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Enter a User ID" %>
-  <%= submit_tag "Search" %>
-<% end %>
-
-<% @user_photos_urls.each do |url| %>
-  <tr>
-	<td><img src="<%=url%>" style="width: 150px;height: 100px;"></td>
-  </tr>
-<% end %>
+<div class="container">
+  <h1 id="logo">Flickr Flickr Hurra</h1>
+  <%= render 'search' %>
+  <p>Go to <%=link_to "idGettr", "http://idgettr.com/" %> to get the Flickr ID</p>
+  <%= render 'search_results' %>
+</div>
