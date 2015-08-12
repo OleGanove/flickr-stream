@@ -1,0 +1,34 @@
+<h1>Listing photos</h1>
+
+  <table>
+    <thead>
+      <tr>
+	    <th></th>
+		<th></th>
+		<th></th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	<% @photos.each do |photo| %>
+	  <tr>
+	    <td><img src="<%= photo.photo_url %>" style="width: 150px;height: 100px;"></td>
+		<td><%= link_to "Show", photo %></td>
+		<td><%= link_to "Destroy", photo, method: :delete, data: { confirm: "Are you sure?" } %></td>
+	  </tr>
+	<% end %>
+	</tbody>
+  </table>
+
+<br>
+<p><%= @id %> <%= @username %></p>
+<%= link_to "New Photo", new_photo_path %>
+
+
+<h1>All flickr photos for <%= @username %></h1>
+	<% @flickr_photos_urls.each do |url| %>
+	  <tr>
+	    <td><img src="<%=url%>" style="width: 150px;height: 100px;"></td>
+	  </tr>
+	<% end %>
+
