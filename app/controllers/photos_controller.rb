@@ -15,6 +15,13 @@ class PhotosController < ApplicationController
   	  @flickr_photos_urls << FlickRaw.url(photo)
   	end
 
+  	@user_photos = flickr.photos.search(:user_id => params[:search])
+  	@user_photos_urls = []
+
+  	@user_photos.each do |photo|
+  	  @user_photos_urls << FlickRaw.url(photo)
+  	end
+
     @photos = Photo.all
   end
 

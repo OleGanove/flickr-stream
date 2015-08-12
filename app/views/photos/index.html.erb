@@ -26,9 +26,22 @@
 
 
 <h1>All flickr photos for <%= @username %></h1>
-	<% @flickr_photos_urls.each do |url| %>
-	  <tr>
-	    <td><img src="<%=url%>" style="width: 150px;height: 100px;"></td>
-	  </tr>
-	<% end %>
 
+<% @flickr_photos_urls.each do |url| %>
+  <tr>
+	<td><img src="<%=url%>" style="width: 150px;height: 100px;"></td>
+  </tr>
+<% end %>
+
+<h1>Search for a user's photos</h1>
+
+<%= form_tag(photos_path, :method => "get") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Enter a User ID" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% @user_photos_urls.each do |url| %>
+  <tr>
+	<td><img src="<%=url%>" style="width: 150px;height: 100px;"></td>
+  </tr>
+<% end %>
